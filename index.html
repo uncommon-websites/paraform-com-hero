@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paraform Hero Section</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..800;1,6..72,300..800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Newsreader', 'serif'],
+                    },
+                    colors: {
+                        background: '#F9FAFA',
+                        primary: '#111111',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #F9FAFA;
+            -webkit-font-smoothing: antialiased;
+        }
+        .logo-filter {
+            filter: grayscale(100%) opacity(0.6);
+            transition: filter 0.3s;
+        }
+        .logo-filter:hover {
+            filter: grayscale(0%) opacity(1);
+        }
+    </style>
+</head>
+<body class="text-gray-900">
+
+    <!-- Navbar -->
+    <nav class="w-full border-b border-transparent">
+        <div class="max-w-[1400px] mx-auto px-6 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <div class="flex items-center gap-2 cursor-pointer">
+                <div class="w-6 h-6 bg-black rounded-full flex items-center justify-center text-white">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="4" y1="8" x2="20" y2="8"></line>
+                        <line x1="4" y1="16" x2="14" y2="16"></line>
+                    </svg>
+                </div>
+                <span class="font-semibold text-lg tracking-tight">Paraform</span>
+            </div>
+
+            <!-- Navigation Links -->
+            <div class="hidden md:flex items-center gap-8 text-[15px] text-gray-600 font-medium">
+                <a href="#" class="hover:text-black transition-colors">For companies</a>
+                <a href="#" class="hover:text-black transition-colors">For recruiters</a>
+                <a href="#" class="hover:text-black transition-colors">Customers</a>
+                <div class="flex items-center gap-1 cursor-pointer hover:text-black transition-colors group">
+                    <span>Resources</span>
+                    <svg class="w-3 h-3 text-gray-400 group-hover:text-black transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </div>
+                <a href="#" class="hover:text-black transition-colors">Careers</a>
+            </div>
+
+            <!-- Right Actions -->
+            <div class="flex items-center gap-6">
+                <a href="#" class="text-[15px] font-medium text-gray-600 hover:text-black transition-colors hidden sm:block">Sign up</a>
+                <a href="#" class="text-[15px] font-medium text-gray-900 border border-gray-200 bg-white hover:bg-gray-50 rounded-full px-5 py-2 transition-colors">
+                    Get a demo
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-16 pb-20">
+        
+        <!-- Hero Section -->
+        <div class="max-w-5xl mx-auto px-6 flex flex-col items-center text-center">
+            
+            <!-- Announcement Pill -->
+            <a href="#" class="group inline-flex items-center gap-2 bg-[#EAECEE] hover:bg-[#E0E2E4] transition-colors rounded-full pl-1 pr-3 py-1 mb-10">
+                <div class="w-5 h-5 bg-black rounded-full flex items-center justify-center text-white shrink-0">
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="4" y1="8" x2="20" y2="8"></line>
+                        <line x1="4" y1="16" x2="14" y2="16"></line>
+                    </svg>
+                </div>
+                <span class="text-[13px] font-medium text-gray-700">Paraform raises $20M to build the future of hiring</span>
+                <svg class="w-3 h-3 text-gray-500 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+            </a>
+
+            <!-- Headline -->
+            <h1 class="font-serif text-5xl md:text-[5.5rem] leading-[1.1] text-gray-900 tracking-tight mb-8">
+                Where iconic companies hire <br class="hidden md:block" />
+                <span class="italic font-light">their best talent</span>
+            </h1>
+
+            <!-- Subheadline -->
+            <p class="text-lg md:text-[1.15rem] text-gray-600 mb-10 max-w-xl mx-auto leading-relaxed">
+                Match with expert recruiters and fill your hardest roles.
+            </p>
+
+            <!-- CTA Button -->
+            <button class="bg-[#111111] text-white text-[15px] font-medium px-8 py-3.5 rounded-full hover:bg-black/80 transition-all transform hover:-translate-y-0.5 shadow-lg shadow-black/10">
+                Get a demo
+            </button>
+        </div>
+
+        <!-- Logos Section -->
+        <div class="max-w-[1400px] mx-auto px-6 mt-24 mb-24">
+            <div class="flex flex-wrap justify-center items-center gap-x-12 gap-y-8 md:gap-x-16">
+                <!-- Using text-based images from placehold.co to simulate logos with specific fonts/styles -->
+                <img src="https://placehold.co/120x30/F9FAFA/555555?text=Palantir&font=merriweather" alt="Palantir" class="h-7 object-contain logo-filter mix-blend-multiply">
+                <img src="https://placehold.co/100x30/F9FAFA/555555?text=Nooks&font=montserrat" alt="Nooks" class="h-6 object-contain logo-filter mix-blend-multiply">
+                <img src="https://placehold.co/130x30/F9FAFA/555555?text=DECAGON&font=oswald" alt="Decagon" class="h-5 object-contain logo-filter mix-blend-multiply">
+                <img src="https://placehold.co/100x30/F9FAFA/555555?text=scale&font=lato" alt="Scale" class="h-7 object-contain logo-filter mix-blend-multiply">
+                <img src="https://placehold.co/120x30/F9FAFA/555555?text=RIPPLING&font=roboto" alt="Rippling" class="h-5 object-contain logo-filter mix-blend-multiply">
+                <img src="https://placehold.co/100x30/F9FAFA/555555?text=NEROS&font=raleway" alt="Neros" class="h-5 object-contain logo-filter mix-blend-multiply">
+                <img src="https://placehold.co/120x30/F9FAFA/555555?text=Windsurf&font=playfair-display" alt="Windsurf" class="h-7 object-contain logo-filter mix-blend-multiply">
+            </div>
+        </div>
+
+        <!-- Feature Cards -->
+        <div class="max-w-[1400px] mx-auto px-6 grid md:grid-cols-2 gap-6">
+            
+            <!-- Left Card -->
+            <div class="relative bg-[#0F1111] rounded-3xl overflow-hidden h-[500px] group cursor-pointer">
+                <div class="absolute top-10 left-10 z-10">
+                    <h3 class="text-white text-2xl font-medium tracking-tight">Quality candidates, faster</h3>
+                </div>
+                <!-- Placeholder for the man's image -->
+                <div class="absolute bottom-0 left-0 right-0 h-[80%] flex items-end justify-center">
+                    <img src="https://placehold.co/600x500/1a1a1a/444444?text=Portrait+Image" alt="Candidate" class="w-full h-full object-cover opacity-80 mask-image-gradient">
+                    <!-- Gradient overlay to blend bottom -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                </div>
+            </div>
+
+            <!-- Right Card -->
+            <div class="relative bg-gradient-to-br from-[#9CA3AF] to-[#6B7280] rounded-3xl overflow-hidden h-[500px] group cursor-pointer">
+                <div class="absolute top-10 left-10 z-10">
+                    <h3 class="text-white text-2xl font-medium tracking-tight">Recruiter-first, finally</h3>
+                </div>
+                
+                <!-- UI Mockup Placeholder -->
+                <div class="absolute bottom-0 right-0 w-[85%] h-[65%] bg-white rounded-tl-2xl shadow-2xl p-6 transform translate-y-4 translate-x-4 transition-transform group-hover:translate-y-2 group-hover:translate-x-2">
+                    <!-- Mockup Header -->
+                    <div class="flex justify-between text-[10px] text-gray-400 uppercase tracking-wider font-semibold mb-4 border-b border-gray-100 pb-2">
+                        <span>Company</span>
+                        <span>Role</span>
+                    </div>
+                    
+                    <!-- Mockup Item 1 -->
+                    <div class="flex items-center justify-between py-3 border-b border-gray-50">
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 bg-black rounded-md flex items-center justify-center text-white text-xs">P</div>
+                            <span class="text-sm font-semibold text-gray-900">Palantir</span>
+                        </div>
+                        <span class="text-xs text-gray-500">Forward Deployed Engineer</span>
+                    </div>
+
+                    <!-- Mockup Item 2 -->
+                    <div class="flex items-center justify-between py-3 border-b border-gray-50">
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 bg-orange-500 rounded-md flex items-center justify-center text-white text-xs">Y</div>
+                            <span class="text-sm font-semibold text-gray-900">Y Combinator</span>
+                        </div>
+                        <span class="text-xs text-gray-500">Head of Growth</span>
+                    </div>
+
+                     <!-- Mockup Item 3 -->
+                     <div class="flex items-center justify-between py-3">
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 bg-blue-600 rounded-md flex items-center justify-center text-white text-xs">S</div>
+                            <span class="text-sm font-semibold text-gray-900">Stripe</span>
+                        </div>
+                        <span class="text-xs text-gray-500">Backend Engineer</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+</body>
+</html>
