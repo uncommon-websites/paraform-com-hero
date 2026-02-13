@@ -3,177 +3,220 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paraform Hero Section</title>
+    <title>Paraform Hero Recreation</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Newsreader', 'serif'],
+                    },
+                    colors: {
+                        gray: {
+                            50: '#F9FAFB',
+                            100: '#F3F4F6',
+                            800: '#1F2937',
+                            900: '#111827',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #F8F9FA;
-            color: #111827;
+        /* Typography Utilities */
+        .text-balance { text-wrap: balance; }
+        .text-pretty { text-wrap: pretty; }
+
+        /* Animation keyframes */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+                filter: blur(4px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+                filter: blur(0);
+            }
         }
-        .font-serif-display {
-            font-family: 'Instrument Serif', serif;
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
-        .logo-grayscale {
-            filter: grayscale(100%) opacity(0.6);
-            transition: filter 0.3s ease, opacity 0.3s ease;
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
-        .logo-grayscale:hover {
-            filter: grayscale(0%) opacity(1);
+
+        /* Base animation class - ease-out for entering elements */
+        .animate-fade-in-up {
+            opacity: 0;
+            animation: fadeInUp 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+        }
+
+        .animate-fade-in {
+            opacity: 0;
+            animation: fadeIn 0.6s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+        }
+
+        .animate-scale-in {
+            opacity: 0;
+            animation: scaleIn 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+        }
+
+        /* Staggered delays for sequential reveals */
+        .delay-0 { animation-delay: 0ms; }
+        .delay-100 { animation-delay: 100ms; }
+        .delay-200 { animation-delay: 200ms; }
+        .delay-300 { animation-delay: 300ms; }
+        .delay-400 { animation-delay: 400ms; }
+        .delay-500 { animation-delay: 500ms; }
+        .delay-600 { animation-delay: 600ms; }
+        .delay-700 { animation-delay: 700ms; }
+        .delay-800 { animation-delay: 800ms; }
+
+        /* Accessibility: Respect reduced motion preferences */
+        @media (prefers-reduced-motion: reduce) {
+            .animate-fade-in-up,
+            .animate-fade-in,
+            .animate-scale-in {
+                animation: none;
+                opacity: 1;
+                transform: none;
+                filter: none;
+            }
         }
     </style>
 </head>
-<body>
+<body class="bg-[#F9FAFB] text-gray-900 antialiased overflow-x-hidden">
 
-    <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 bg-[#F8F9FA]/90 backdrop-blur-sm border-b border-gray-200/50">
-        <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <!-- Logo -->
-                <div class="flex items-center gap-2 cursor-pointer">
-                    <div class="w-6 h-6 bg-black rounded-full flex items-center justify-center text-white relative overflow-hidden">
-                        <div class="flex flex-col gap-[2px] items-start w-3">
-                            <div class="h-[2px] w-3 bg-white rounded-full"></div>
-                            <div class="h-[2px] w-2 bg-white rounded-full"></div>
-                            <div class="h-[2px] w-3 bg-white rounded-full"></div>
-                        </div>
-                    </div>
-                    <span class="font-semibold text-[17px] tracking-tight text-gray-900">Paraform</span>
+    <!-- Navbar -->
+    <nav class="w-full px-6 py-5 animate-fade-in delay-0">
+        <div class="max-w-[1400px] mx-auto flex items-center justify-between">
+            <!-- Logo -->
+            <div class="flex items-center gap-2">
+                <div class="w-6 h-6 bg-black rounded-full flex items-center justify-center text-white">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="12" x2="15" y2="12"></line>
+                        <line x1="3" y1="18" x2="10" y2="18"></line>
+                    </svg>
                 </div>
+                <span class="font-bold text-lg tracking-tight">Paraform</span>
+            </div>
 
-                <!-- Desktop Menu -->
-                <div class="hidden lg:flex items-center space-x-8 text-[15px] font-medium text-gray-600">
-                    <a href="#" class="hover:text-gray-900 transition-colors">For companies</a>
-                    <a href="#" class="hover:text-gray-900 transition-colors">For recruiters</a>
-                    <a href="#" class="hover:text-gray-900 transition-colors">Customers</a>
-                    <div class="flex items-center gap-1 cursor-pointer group hover:text-gray-900 transition-colors">
-                        <span>Resources</span>
-                        <svg class="w-3 h-3 text-gray-400 group-hover:text-gray-900 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                    </div>
-                    <a href="#" class="hover:text-gray-900 transition-colors">Careers</a>
+            <!-- Desktop Links -->
+            <div class="hidden lg:flex items-center gap-8 text-[15px] font-medium text-gray-600">
+                <a href="#" class="hover:text-black transition-colors">For companies</a>
+                <a href="#" class="hover:text-black transition-colors">For recruiters</a>
+                <a href="#" class="hover:text-black transition-colors">Customers</a>
+                <div class="flex items-center gap-1 cursor-pointer hover:text-black transition-colors group">
+                    <span>Resources</span>
+                    <svg class="w-3 h-3 text-gray-400 group-hover:text-black transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </div>
+                <a href="#" class="hover:text-black transition-colors">Careers</a>
+            </div>
 
-                <!-- Right Buttons -->
-                <div class="flex items-center gap-4">
-                    <a href="#" class="hidden sm:block text-[15px] font-medium text-gray-600 hover:text-gray-900 transition-colors">Sign up</a>
-                    <a href="#" class="text-[15px] font-medium bg-white border border-gray-200 hover:bg-gray-50 text-gray-900 px-5 py-2 rounded-full transition-all shadow-sm">Get a demo</a>
-                </div>
+            <!-- Actions -->
+            <div class="flex items-center gap-4">
+                <a href="#" class="text-[15px] font-medium text-gray-600 hover:text-black transition-colors hidden sm:block">Sign up</a>
+                <a href="#" class="text-[15px] font-medium bg-[#F3F4F6] hover:bg-gray-200 transition-colors px-5 py-2.5 rounded-full">Get a demo</a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <main class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-[1440px] mx-auto">
-        
-        <div class="flex flex-col items-center text-center max-w-5xl mx-auto">
+    <!-- Main Hero Content -->
+    <main class="w-full pt-16 pb-20 px-4">
+        <div class="max-w-5xl mx-auto flex flex-col items-center text-center">
             
             <!-- Announcement Pill -->
-            <a href="#" class="group inline-flex items-center gap-2 bg-[#E5E7EB]/60 hover:bg-[#E5E7EB] border border-gray-200 rounded-full pl-1 pr-3 py-1 mb-10 transition-colors cursor-pointer">
-                <div class="w-5 h-5 bg-black rounded-full flex items-center justify-center text-white">
-                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="8" x2="20" y2="8"></line><line x1="4" y1="16" x2="14" y2="16"></line></svg>
+            <a href="#" class="animate-fade-in-up delay-100 inline-flex items-center gap-2 bg-[#EAECEF] hover:bg-gray-200 transition-colors px-3 py-1.5 rounded-full text-[13px] font-medium text-gray-700 mb-8 group">
+                <div class="w-4 h-4 bg-black rounded-full flex items-center justify-center text-white">
+                    <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="12" x2="15" y2="12"></line>
+                        <line x1="3" y1="18" x2="10" y2="18"></line>
+                    </svg>
                 </div>
-                <span class="text-[13px] font-medium text-gray-700">Paraform raises $20M to build the future of hiring</span>
+                <span>Paraform raises $20M to build the future of hiring</span>
                 <svg class="w-3 h-3 text-gray-500 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
             </a>
 
             <!-- Headline -->
-            <h1 class="font-serif-display text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] leading-[1.05] text-[#111827] mb-8 tracking-tight">
-                Where iconic companies hire <br class="hidden md:block" /> their best talent
+            <h1 class="animate-fade-in-up delay-200 font-serif text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] leading-[1.05] tracking-tight text-gray-900 text-balance mb-6 max-w-4xl">
+                Where iconic companies hire their best talent
             </h1>
 
             <!-- Subheadline -->
-            <p class="text-lg sm:text-xl text-gray-600 mb-10 max-w-xl mx-auto leading-relaxed">
+            <p class="animate-fade-in-up delay-300 text-lg md:text-xl text-gray-600 text-pretty max-w-2xl mb-10 leading-relaxed">
                 Match with expert recruiters and fill your hardest roles.
             </p>
 
-            <!-- CTA -->
-            <a href="#" class="bg-[#111827] text-white text-[15px] font-medium px-8 py-3.5 rounded-full hover:bg-black transition-transform hover:scale-105 shadow-lg shadow-gray-200 mb-24 inline-block">
+            <!-- CTA Button -->
+            <button class="animate-fade-in-up delay-400 bg-[#111111] hover:bg-black text-white text-[15px] font-medium px-8 py-3.5 rounded-full transition-all hover:scale-105 active:scale-95 shadow-lg shadow-gray-200">
                 Get a demo
-            </a>
+            </button>
 
-            <!-- Logos Grid -->
-            <div class="w-full flex flex-wrap justify-center items-center gap-x-8 gap-y-8 md:gap-x-12 lg:gap-x-16 mb-24 px-4">
-                <!-- Palantir -->
-                <div class="logo-grayscale flex items-center gap-2">
-                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 22h20L12 2zm0 5l6 12H6l6-12z"/></svg>
-                    <span class="text-lg font-semibold tracking-tight">Palantir</span>
-                </div>
-                <!-- Hightouch -->
-                <div class="logo-grayscale flex items-center gap-2">
-                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><rect x="2" y="2" width="9" height="9" /><rect x="13" y="13" width="9" height="9" /></svg>
-                    <span class="text-lg font-bold tracking-tighter">hightouch</span>
-                </div>
-                <!-- Decagon -->
-                <div class="logo-grayscale flex items-center gap-2">
-                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2l8.5 5v10L12 22l-8.5-5V7L12 2z"/></svg>
-                    <span class="text-base font-bold tracking-widest uppercase">Decagon</span>
-                </div>
-                <!-- Basis -->
-                <div class="logo-grayscale flex items-center gap-2">
-                    <div class="w-5 h-5 bg-current rounded-full flex items-center justify-center text-white text-[10px] font-bold">B</div>
-                    <span class="text-lg font-semibold">Basis</span>
-                </div>
-                <!-- Rippling -->
-                <div class="logo-grayscale flex items-center gap-2">
-                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M4 12c0-4.4 3.6-8 8-8s8 3.6 8 8-3.6 8-8 8-8-3.6-8-8zm2 0c0 3.3 2.7 6 6 6s6-2.7 6-6-2.7-6-6-6-6 2.7-6 6z"/></svg>
-                    <span class="text-lg font-bold uppercase tracking-wide">Rippling</span>
-                </div>
-                <!-- Neros -->
-                <div class="logo-grayscale flex items-center gap-2">
-                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 4v16l12-16v16"/></svg>
-                    <span class="text-lg font-bold uppercase">Neros</span>
-                </div>
-                <!-- Windsurf -->
-                <div class="logo-grayscale flex items-center gap-2">
-                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 8l4 8 4-8 4 8 4-8"/></svg>
-                    <span class="text-lg font-medium">Windsurf</span>
+            <!-- Logos Section -->
+            <div class="animate-fade-in delay-500 mt-20 w-full">
+                <div class="flex flex-wrap justify-center items-center gap-x-10 gap-y-8 opacity-60 grayscale">
+                    <!-- Using placeholder images styled to look like logos as requested -->
+                    <img src="https://placehold.co/100x30/F9FAFB/333?text=scale&font=montserrat" alt="Scale" class="h-7 w-auto object-contain mix-blend-multiply">
+                    <img src="https://placehold.co/110x30/F9FAFB/333?text=Gather&font=playfair-display" alt="Gather" class="h-7 w-auto object-contain mix-blend-multiply">
+                    <img src="https://placehold.co/120x30/F9FAFB/333?text=Windsurf&font=roboto" alt="Windsurf" class="h-7 w-auto object-contain mix-blend-multiply">
+                    <img src="https://placehold.co/100x30/F9FAFB/333?text=Owner&font=lato" alt="Owner" class="h-7 w-auto object-contain mix-blend-multiply">
+                    <img src="https://placehold.co/80x30/F9FAFB/333?text=HEX&font=oswald" alt="Hex" class="h-7 w-auto object-contain mix-blend-multiply">
+                    <img src="https://placehold.co/90x30/F9FAFB/333?text=Basis&font=merriweather" alt="Basis" class="h-7 w-auto object-contain mix-blend-multiply">
+                    <img src="https://placehold.co/130x30/F9FAFB/333?text=DECAGON&font=raleway" alt="Decagon" class="h-6 w-auto object-contain mix-blend-multiply">
                 </div>
             </div>
-
         </div>
 
         <!-- Feature Cards Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-7xl mx-auto">
+        <div class="max-w-[1400px] mx-auto mt-20 grid grid-cols-1 md:grid-cols-2 gap-6 px-2">
             
-            <!-- Left Card -->
-            <div class="relative h-[480px] rounded-3xl overflow-hidden bg-[#0F1115] group cursor-pointer">
-                <div class="absolute top-0 left-0 w-full p-8 sm:p-10 z-20">
-                    <h3 class="text-2xl sm:text-3xl font-medium text-white tracking-tight">Quality candidates, faster</h3>
+            <!-- Left Card (Dark) -->
+            <div class="animate-scale-in delay-600 relative h-[400px] md:h-[500px] bg-[#0F1110] rounded-2xl overflow-hidden group">
+                <div class="absolute top-0 left-0 w-full p-8 md:p-10 z-10">
+                    <h3 class="text-white text-2xl md:text-3xl font-medium tracking-tight">Quality candidates, faster</h3>
                 </div>
-                
                 <!-- Image Container -->
-                <div class="absolute inset-0 flex items-end justify-center pt-20">
-                    <div class="w-full h-full relative">
-                        <!-- Placeholder for the man's photo -->
-                        <img src="https://placehold.co/800x800/1a1a1a/666666?text=Candidate+Photo" 
-                             alt="Candidate Portrait" 
-                             class="w-full h-full object-cover object-top opacity-90 group-hover:scale-105 transition-transform duration-700 ease-out">
-                        <!-- Gradient to fade image into background at bottom if needed, or top for text -->
-                        <div class="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-[#0F1115]/80 to-transparent"></div>
-                    </div>
+                <div class="absolute bottom-0 left-0 w-full h-[80%] flex items-end justify-center">
+                    <img src="https://placehold.co/800x800/222/666?text=Portrait+Image" alt="Quality candidates" class="w-full h-full object-cover object-top opacity-80 group-hover:scale-105 transition-transform duration-700 ease-out">
+                    <!-- Gradient overlay for text readability if needed -->
+                    <div class="absolute inset-0 bg-gradient-to-b from-[#0F1110] via-transparent to-transparent opacity-50"></div>
                 </div>
             </div>
 
-            <!-- Right Card -->
-            <div class="relative h-[480px] rounded-3xl overflow-hidden bg-gradient-to-br from-[#9CA5B0] to-[#747C88] group cursor-pointer">
-                <div class="absolute top-0 left-0 w-full p-8 sm:p-10 z-20">
-                    <h3 class="text-2xl sm:text-3xl font-medium text-white tracking-tight">Recruiter-first, finally</h3>
+            <!-- Right Card (Light/Gradient) -->
+            <div class="animate-scale-in delay-700 relative h-[400px] md:h-[500px] bg-gradient-to-br from-[#9CA3AF] to-[#6B7280] rounded-2xl overflow-hidden group">
+                <div class="absolute top-0 left-0 w-full p-8 md:p-10 z-10">
+                    <h3 class="text-white text-2xl md:text-3xl font-medium tracking-tight">Recruiter-first, finally</h3>
                 </div>
-
                 <!-- UI Mockup Container -->
-                <div class="absolute bottom-0 right-0 w-[85%] h-[75%] translate-x-4 translate-y-4 shadow-2xl rounded-tl-xl overflow-hidden transition-transform duration-500 group-hover:-translate-y-2 group-hover:-translate-x-2">
-                    <!-- Placeholder for the UI Interface -->
-                    <img src="https://placehold.co/800x600/ffffff/f3f4f6?text=Recruiter+Dashboard+UI" 
-                         alt="Recruiter Dashboard" 
-                         class="w-full h-full object-cover object-left-top">
+                <div class="absolute bottom-[-10%] right-[-5%] w-[90%] h-[70%] shadow-2xl rounded-tl-xl overflow-hidden transform group-hover:-translate-y-2 transition-transform duration-500">
+                    <img src="https://placehold.co/800x600/fff/eee?text=UI+Dashboard+Mockup" alt="Recruiter Dashboard" class="w-full h-full object-cover object-left-top">
                 </div>
             </div>
 
         </div>
-
     </main>
 
 </body>
