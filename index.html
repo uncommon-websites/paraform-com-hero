@@ -3,85 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paraform Hero Recreation</title>
+    <title>Paraform - Hero Recreation</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        serif: ['Newsreader', 'serif'],
-                    },
-                    colors: {
-                        gray: {
-                            50: '#F9FAFB',
-                            100: '#F3F4F6',
-                            800: '#1F2937',
-                            900: '#111827',
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-
     <style>
-        /* Typography Utilities */
-        .text-balance { text-wrap: balance; }
-        .text-pretty { text-wrap: pretty; }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
 
-        /* Animation keyframes */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-                filter: blur(4px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-                filter: blur(0);
-            }
+        /* Custom Serif Font Stack to closely match the design */
+        .font-serif-custom {
+            font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
         }
 
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F6F7F6;
+            color: #111111;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
-
         @keyframes scaleIn {
-            from {
-                opacity: 0;
-                transform: scale(0.95);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
+            from { opacity: 0; transform: scale(0.97); }
+            to { opacity: 1; transform: scale(1); }
         }
 
-        /* Base animation class - ease-out for entering elements */
         .animate-fade-in-up {
             opacity: 0;
-            animation: fadeInUp 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+            animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
-
         .animate-fade-in {
             opacity: 0;
-            animation: fadeIn 0.6s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+            animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
-
         .animate-scale-in {
             opacity: 0;
-            animation: scaleIn 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+            animation: scaleIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
-        /* Staggered delays for sequential reveals */
         .delay-0 { animation-delay: 0ms; }
         .delay-100 { animation-delay: 100ms; }
         .delay-200 { animation-delay: 200ms; }
@@ -89,134 +52,142 @@
         .delay-400 { animation-delay: 400ms; }
         .delay-500 { animation-delay: 500ms; }
         .delay-600 { animation-delay: 600ms; }
-        .delay-700 { animation-delay: 700ms; }
-        .delay-800 { animation-delay: 800ms; }
 
-        /* Accessibility: Respect reduced motion preferences */
+        .text-balance { text-wrap: balance; }
+        .text-pretty { text-wrap: pretty; }
+
         @media (prefers-reduced-motion: reduce) {
-            .animate-fade-in-up,
-            .animate-fade-in,
-            .animate-scale-in {
+            .animate-fade-in-up, .animate-fade-in, .animate-scale-in {
                 animation: none;
                 opacity: 1;
                 transform: none;
-                filter: none;
             }
         }
     </style>
 </head>
-<body class="bg-[#F9FAFB] text-gray-900 antialiased overflow-x-hidden">
+<body class="antialiased overflow-x-hidden selection:bg-gray-300 selection:text-black">
 
-    <!-- Navbar -->
-    <nav class="w-full px-6 py-5 animate-fade-in delay-0">
-        <div class="max-w-[1400px] mx-auto flex items-center justify-between">
-            <!-- Logo -->
-            <div class="flex items-center gap-2">
-                <div class="w-6 h-6 bg-black rounded-full flex items-center justify-center text-white">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="3" y1="6" x2="21" y2="6"></line>
-                        <line x1="3" y1="12" x2="15" y2="12"></line>
-                        <line x1="3" y1="18" x2="10" y2="18"></line>
-                    </svg>
-                </div>
-                <span class="font-bold text-lg tracking-tight">Paraform</span>
+    <!-- Navigation -->
+    <header class="w-full max-w-[1440px] mx-auto px-6 py-5 flex items-center justify-between animate-fade-in delay-0 relative z-50">
+        <!-- Logo -->
+        <a href="#" class="flex items-center gap-2">
+            <div class="w-6 h-6 bg-[#111] rounded-full flex items-center justify-center">
+                <svg class="w-3 h-3 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h7c3.3 0 6 2.7 6 6s-2.7 6-6 6H8v4H4V4zm4 4v4h3c1.1 0 2-.9 2-2s-.9-2-2-2H8z"/></svg>
             </div>
+            <span class="font-semibold text-lg tracking-tight">Paraform</span>
+        </a>
 
-            <!-- Desktop Links -->
-            <div class="hidden lg:flex items-center gap-8 text-[15px] font-medium text-gray-600">
-                <a href="#" class="hover:text-black transition-colors">For companies</a>
-                <a href="#" class="hover:text-black transition-colors">For recruiters</a>
-                <a href="#" class="hover:text-black transition-colors">Customers</a>
-                <div class="flex items-center gap-1 cursor-pointer hover:text-black transition-colors group">
-                    <span>Resources</span>
-                    <svg class="w-3 h-3 text-gray-400 group-hover:text-black transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                </div>
-                <a href="#" class="hover:text-black transition-colors">Careers</a>
-            </div>
+        <!-- Center Links -->
+        <nav class="hidden lg:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
+            <a href="#" class="text-[15px] text-gray-500 hover:text-gray-900 transition-colors">For companies</a>
+            <a href="#" class="text-[15px] text-gray-500 hover:text-gray-900 transition-colors">For recruiters</a>
+            <a href="#" class="text-[15px] text-gray-500 hover:text-gray-900 transition-colors">Customers</a>
+            <button class="flex items-center gap-1 text-[15px] text-gray-500 hover:text-gray-900 transition-colors">
+                Resources
+                <svg class="w-3 h-3 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <a href="#" class="text-[15px] text-gray-500 hover:text-gray-900 transition-colors">Careers</a>
+        </nav>
 
-            <!-- Actions -->
-            <div class="flex items-center gap-4">
-                <a href="#" class="text-[15px] font-medium text-gray-600 hover:text-black transition-colors hidden sm:block">Sign up</a>
-                <a href="#" class="text-[15px] font-medium bg-[#F3F4F6] hover:bg-gray-200 transition-colors px-5 py-2.5 rounded-full">Get a demo</a>
-            </div>
+        <!-- Right Actions -->
+        <div class="flex items-center gap-6">
+            <a href="#" class="hidden sm:block text-[15px] text-gray-600 hover:text-gray-900 transition-colors">Sign up</a>
+            <a href="#" class="px-4 py-2 rounded-full border border-gray-200 text-[15px] font-medium hover:bg-gray-50 transition-colors duration-200 active:scale-97">Get a demo</a>
         </div>
-    </nav>
+    </header>
 
-    <!-- Main Hero Content -->
-    <main class="w-full pt-16 pb-20 px-4">
-        <div class="max-w-5xl mx-auto flex flex-col items-center text-center">
+    <main>
+        <!-- Hero Section -->
+        <section class="w-full max-w-[1000px] mx-auto px-6 pt-20 pb-16 flex flex-col items-center text-center">
             
-            <!-- Announcement Pill -->
-            <a href="#" class="animate-fade-in-up delay-100 inline-flex items-center gap-2 bg-[#EAECEF] hover:bg-gray-200 transition-colors px-3 py-1.5 rounded-full text-[13px] font-medium text-gray-700 mb-8 group">
-                <div class="w-4 h-4 bg-black rounded-full flex items-center justify-center text-white">
-                    <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="3" y1="6" x2="21" y2="6"></line>
-                        <line x1="3" y1="12" x2="15" y2="12"></line>
-                        <line x1="3" y1="18" x2="10" y2="18"></line>
-                    </svg>
+            <!-- Announcement Badge -->
+            <a href="#" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#EBECEB] hover:bg-[#E2E3E2] transition-colors duration-200 mb-8 animate-fade-in-up delay-100">
+                <div class="w-5 h-5 bg-[#111] rounded-full flex items-center justify-center">
+                    <svg class="w-2.5 h-2.5 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h7c3.3 0 6 2.7 6 6s-2.7 6-6 6H8v4H4V4zm4 4v4h3c1.1 0 2-.9 2-2s-.9-2-2-2H8z"/></svg>
                 </div>
-                <span>Paraform raises $20M to build the future of hiring</span>
-                <svg class="w-3 h-3 text-gray-500 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                <span class="text-[13px] font-medium text-gray-800">Paraform raises $20M to build the future of hiring 🎉</span>
+                <svg class="w-3.5 h-3.5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
             </a>
 
             <!-- Headline -->
-            <h1 class="animate-fade-in-up delay-200 font-serif text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] leading-[1.05] tracking-tight text-gray-900 text-balance mb-6 max-w-4xl">
-                Where iconic companies hire their best talent
+            <h1 class="font-serif-custom text-5xl sm:text-6xl md:text-[84px] leading-[1.05] tracking-[-0.02em] text-[#111111] text-balance mb-6 animate-fade-in-up delay-200">
+                Where iconic companies hire<br>their best talent
             </h1>
 
             <!-- Subheadline -->
-            <p class="animate-fade-in-up delay-300 text-lg md:text-xl text-gray-600 text-pretty max-w-2xl mb-10 leading-relaxed">
+            <p class="text-lg md:text-[20px] text-gray-700 text-pretty max-w-[600px] mb-10 animate-fade-in-up delay-300">
                 Match with expert recruiters and fill your hardest roles.
             </p>
 
-            <!-- CTA Button -->
-            <button class="animate-fade-in-up delay-400 bg-[#111111] hover:bg-black text-white text-[15px] font-medium px-8 py-3.5 rounded-full transition-all hover:scale-105 active:scale-95 shadow-lg shadow-gray-200">
+            <!-- CTA -->
+            <a href="#" class="px-6 py-3.5 rounded-full bg-[#1A1A1A] text-white text-[15px] font-medium hover:opacity-90 transition-all duration-200 active:scale-97 animate-fade-in-up delay-400">
                 Get a demo
-            </button>
+            </a>
+        </section>
 
-            <!-- Logos Section -->
-            <div class="animate-fade-in delay-500 mt-20 w-full">
-                <div class="flex flex-wrap justify-center items-center gap-x-10 gap-y-8 opacity-60 grayscale">
-                    <!-- Using placeholder images styled to look like logos as requested -->
-                    <img src="https://placehold.co/100x30/F9FAFB/333?text=scale&font=montserrat" alt="Scale" class="h-7 w-auto object-contain mix-blend-multiply">
-                    <img src="https://placehold.co/110x30/F9FAFB/333?text=Gather&font=playfair-display" alt="Gather" class="h-7 w-auto object-contain mix-blend-multiply">
-                    <img src="https://placehold.co/120x30/F9FAFB/333?text=Windsurf&font=roboto" alt="Windsurf" class="h-7 w-auto object-contain mix-blend-multiply">
-                    <img src="https://placehold.co/100x30/F9FAFB/333?text=Owner&font=lato" alt="Owner" class="h-7 w-auto object-contain mix-blend-multiply">
-                    <img src="https://placehold.co/80x30/F9FAFB/333?text=HEX&font=oswald" alt="Hex" class="h-7 w-auto object-contain mix-blend-multiply">
-                    <img src="https://placehold.co/90x30/F9FAFB/333?text=Basis&font=merriweather" alt="Basis" class="h-7 w-auto object-contain mix-blend-multiply">
-                    <img src="https://placehold.co/130x30/F9FAFB/333?text=DECAGON&font=raleway" alt="Decagon" class="h-6 w-auto object-contain mix-blend-multiply">
-                </div>
+        <!-- Logo Strip -->
+        <section class="w-full max-w-[1200px] mx-auto px-6 pb-24 animate-fade-in delay-500">
+            <div class="flex flex-wrap justify-center items-center gap-x-10 md:gap-x-14 gap-y-8 opacity-70">
+                <img src="https://placehold.co/100x30/F6F7F6/111111?text=Owner&font=Montserrat" alt="Owner" class="h-6 w-auto object-contain">
+                <img src="https://placehold.co/100x30/F6F7F6/111111?text=Gather&font=Montserrat" alt="Gather" class="h-6 w-auto object-contain">
+                <img src="https://placehold.co/140x30/F6F7F6/111111?text=DECAGON&font=Montserrat" alt="Decagon" class="h-5 w-auto object-contain">
+                <img src="https://placehold.co/100x30/F6F7F6/111111?text=traba&font=Montserrat" alt="Traba" class="h-6 w-auto object-contain">
+                <img src="https://placehold.co/100x30/F6F7F6/111111?text=Pylon&font=Montserrat" alt="Pylon" class="h-6 w-auto object-contain">
+                <img src="https://placehold.co/160x30/F6F7F6/111111?text=augment+code&font=Montserrat" alt="Augment Code" class="h-5 w-auto object-contain">
+                <img src="https://placehold.co/100x30/F6F7F6/111111?text=meter&font=Montserrat" alt="Meter" class="h-6 w-auto object-contain">
             </div>
-        </div>
+        </section>
 
-        <!-- Feature Cards Grid -->
-        <div class="max-w-[1400px] mx-auto mt-20 grid grid-cols-1 md:grid-cols-2 gap-6 px-2">
+        <!-- Bottom Cards Grid -->
+        <section class="w-full max-w-[1200px] mx-auto px-6 pb-20 grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-6 animate-scale-in delay-600">
             
-            <!-- Left Card (Dark) -->
-            <div class="animate-scale-in delay-600 relative h-[400px] md:h-[500px] bg-[#0F1110] rounded-2xl overflow-hidden group">
-                <div class="absolute top-0 left-0 w-full p-8 md:p-10 z-10">
-                    <h3 class="text-white text-2xl md:text-3xl font-medium tracking-tight">Quality candidates, faster</h3>
+            <!-- Left Card: Quality candidates -->
+            <div class="relative w-full aspect-[4/3] lg:aspect-auto lg:h-[480px] rounded-[24px] overflow-hidden bg-[#111111] group">
+                <!-- Background Image -->
+                <img src="https://placehold.co/1000x800/222222/333333?text=Portrait+Photo" alt="Candidate Portrait" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105">
+                
+                <!-- Gradient Overlays for text readability -->
+                <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-transparent h-1/2"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent mt-auto h-1/2"></div>
+                
+                <!-- Top Content -->
+                <div class="absolute top-0 left-0 p-8">
+                    <h3 class="text-white text-[22px] font-medium tracking-tight">Quality candidates, faster</h3>
                 </div>
-                <!-- Image Container -->
-                <div class="absolute bottom-0 left-0 w-full h-[80%] flex items-end justify-center">
-                    <img src="https://placehold.co/800x800/222/666?text=Portrait+Image" alt="Quality candidates" class="w-full h-full object-cover object-top opacity-80 group-hover:scale-105 transition-transform duration-700 ease-out">
-                    <!-- Gradient overlay for text readability if needed -->
-                    <div class="absolute inset-0 bg-gradient-to-b from-[#0F1110] via-transparent to-transparent opacity-50"></div>
+
+                <!-- Bottom Content -->
+                <div class="absolute bottom-0 left-0 p-8 max-w-[320px]">
+                    <p class="text-white/90 text-[15px] leading-snug">Match with expert recruiters and fill your hardest roles in record time.</p>
+                </div>
+
+                <!-- Bottom Right Button -->
+                <button class="absolute bottom-8 right-8 w-10 h-10 bg-white rounded-full flex items-center justify-center hover:scale-105 transition-transform duration-200">
+                    <svg class="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                </button>
+            </div>
+
+            <!-- Right Card: Recruiter-first -->
+            <div class="relative w-full aspect-[4/3] lg:aspect-auto lg:h-[480px] rounded-[24px] overflow-hidden bg-[#8B95A5] group">
+                <!-- Abstract Background Gradient -->
+                <div class="absolute inset-0 bg-gradient-to-br from-[#9BA4B5] to-[#7A8495]"></div>
+                
+                <!-- Top Content -->
+                <div class="absolute top-0 left-0 p-8 z-10">
+                    <h3 class="text-white text-[22px] font-medium tracking-tight">Recruiter-first, finally</h3>
+                </div>
+
+                <!-- Bottom Left Button -->
+                <button class="absolute bottom-8 left-8 w-10 h-10 border border-white/30 rounded-full flex items-center justify-center text-white hover:bg-white/10 transition-colors duration-200 z-10">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 19L19 5M19 5v10M19 5H9"></path></svg>
+                </button>
+
+                <!-- UI Mockup Image -->
+                <div class="absolute -bottom-2 -right-2 w-[85%] h-auto rounded-tl-[16px] overflow-hidden shadow-2xl transition-transform duration-700 group-hover:-translate-y-2 group-hover:-translate-x-2">
+                    <img src="https://placehold.co/800x600/FFFFFF/E5E7EB?text=UI+Dashboard+Mockup" alt="Platform Interface" class="w-full h-auto block">
                 </div>
             </div>
 
-            <!-- Right Card (Light/Gradient) -->
-            <div class="animate-scale-in delay-700 relative h-[400px] md:h-[500px] bg-gradient-to-br from-[#9CA3AF] to-[#6B7280] rounded-2xl overflow-hidden group">
-                <div class="absolute top-0 left-0 w-full p-8 md:p-10 z-10">
-                    <h3 class="text-white text-2xl md:text-3xl font-medium tracking-tight">Recruiter-first, finally</h3>
-                </div>
-                <!-- UI Mockup Container -->
-                <div class="absolute bottom-[-10%] right-[-5%] w-[90%] h-[70%] shadow-2xl rounded-tl-xl overflow-hidden transform group-hover:-translate-y-2 transition-transform duration-500">
-                    <img src="https://placehold.co/800x600/fff/eee?text=UI+Dashboard+Mockup" alt="Recruiter Dashboard" class="w-full h-full object-cover object-left-top">
-                </div>
-            </div>
-
-        </div>
+        </section>
     </main>
 
 </body>
